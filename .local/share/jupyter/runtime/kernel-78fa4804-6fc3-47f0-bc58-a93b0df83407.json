@@ -1,0 +1,13 @@
+{
+  "shell_port": 40665,
+  "iopub_port": 50917,
+  "stdin_port": 34387,
+  "control_port": 44789,
+  "hb_port": 59745,
+  "ip": "127.0.0.1",
+  "key": "d476730f-1c4f5660aa1e4e8281fb8467",
+  "transport": "tcp",
+  "signature_scheme": "hmac-sha256",
+  "kernel_name": "python3",
+  "jupyter_session": "/home/jupyter/PDF_Reader_RAG_model_Stratos.ipynb"
+}

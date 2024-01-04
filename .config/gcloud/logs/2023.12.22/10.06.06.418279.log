@@ -1,0 +1,10 @@
+2023-12-22 10:06:06,434 DEBUG    root            Loaded Command Group: ['gcloud', 'projects']
+2023-12-22 10:06:06,440 DEBUG    root            Loaded Command Group: ['gcloud', 'projects', 'describe']
+2023-12-22 10:06:06,443 DEBUG    root            Running [gcloud.projects.describe] with arguments: [--format: "value(projectNumber)", PROJECT_ID_OR_NUMBER: "playpen-922939"]
+2023-12-22 10:06:06,536 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2023-12-22 10:06:06,872 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects/playpen-922939?alt=json HTTP/1.1" 200 None
+2023-12-22 10:06:06,878 DEBUG    root            Chosen display Format:default value(projectNumber)
+2023-12-22 10:06:06,879 INFO     root            Display format: "default value(projectNumber)"
+2023-12-22 10:06:06,880 INFO     ___FILE_ONLY___ 826034033156
+
+2023-12-22 10:06:06,889 DEBUG    root            SDK update checks are disabled.

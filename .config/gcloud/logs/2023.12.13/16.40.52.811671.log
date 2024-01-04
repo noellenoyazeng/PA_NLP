@@ -1,0 +1,131 @@
+2023-12-13 16:40:52,814 DEBUG    root            Loaded Command Group: ['gcloud', 'services']
+2023-12-13 16:40:52,823 DEBUG    root            Loaded Command Group: ['gcloud', 'services', 'enable']
+2023-12-13 16:40:52,825 DEBUG    root            Running [gcloud.services.enable] with arguments: [SERVICE:3: "['documentai.googleapis.com', 'storage.googleapis.com', 'aiplatform.googleapis.com']"]
+2023-12-13 16:40:52,850 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2023-12-13 16:40:53,835 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "POST /v1/projects/playpen-922939/services:batchEnable?alt=json HTTP/1.1" 403 None
+2023-12-13 16:40:53,840 DEBUG    root            Chosen display Format:default
+2023-12-13 16:40:53,853 DEBUG    root            Chosen display Format:default
+2023-12-13 16:40:53,843 DEBUG    root            (gcloud.services.enable) User [playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com] does not have permission to access projects instance [playpen-922939] (or it may not exist): Permission denied to enable service [documentai.googleapis.com]
+Permission denied to enable service [storage.googleapis.com]
+Permission denied to enable service [aiplatform.googleapis.com]
+Help Token: ARD_zUY8EpU3bre10jqo856pMrbck37L0woaK_CuB5YR8jmNuvpHI-cOKUiaI5JQ7xAGJr9Ibdv3MuQ21-9wLRIZPXYDdG80h2KO3dkhmyB2TANy
+- '@type': type.googleapis.com/google.rpc.PreconditionFailure
+  violations:
+  - subject: ?error_code=110002&service=serviceusage.googleapis.com&permission=serviceusage.services.enable&resource=playpen-922939
+    type: googleapis.com
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: serviceusage.googleapis.com
+  metadata:
+    permission: serviceusage.services.enable
+    resource: playpen-922939
+    service: serviceusage.googleapis.com
+  reason: AUTH_PERMISSION_DENIED
+Traceback (most recent call last):
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/api_lib/services/serviceusage.py", line 618, in BatchEnableApiCall
+    return client.services.BatchEnable(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/generated_clients/apis/serviceusage/v1/serviceusage_v1_client.py", line 182, in BatchEnable
+    return self._RunMethod(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 737, in _RunMethod
+    return self.ProcessHttpResponse(method_config, http_response, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 743, in ProcessHttpResponse
+    self.__ProcessHttpResponse(method_config, http_response, request))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 609, in __ProcessHttpResponse
+    raise exceptions.HttpError.FromResponse(
+apitools.base.py.exceptions.HttpForbiddenError: HttpError accessing <https://serviceusage.googleapis.com/v1/projects/playpen-922939/services:batchEnable?alt=json>: response: <{'vary': 'Origin, X-Origin, Referer', 'content-type': 'application/json; charset=UTF-8', 'content-encoding': 'gzip', 'date': 'Wed, 13 Dec 2023 16:40:53 GMT', 'server': 'ESF', 'cache-control': 'private', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'transfer-encoding': 'chunked', 'status': 403}>, content <{
+  "error": {
+    "code": 403,
+    "message": "Permission denied to enable service [documentai.googleapis.com]\nPermission denied to enable service [storage.googleapis.com]\nPermission denied to enable service [aiplatform.googleapis.com]\nHelp Token: ARD_zUY8EpU3bre10jqo856pMrbck37L0woaK_CuB5YR8jmNuvpHI-cOKUiaI5JQ7xAGJr9Ibdv3MuQ21-9wLRIZPXYDdG80h2KO3dkhmyB2TANy",
+    "status": "PERMISSION_DENIED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.PreconditionFailure",
+        "violations": [
+          {
+            "type": "googleapis.com",
+            "subject": "?error_code=110002&service=serviceusage.googleapis.com&permission=serviceusage.services.enable&resource=playpen-922939"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "AUTH_PERMISSION_DENIED",
+        "domain": "serviceusage.googleapis.com",
+        "metadata": {
+          "service": "serviceusage.googleapis.com",
+          "permission": "serviceusage.services.enable",
+          "resource": "playpen-922939"
+        }
+      }
+    ]
+  }
+}
+>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 987, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 807, in Run
+    resources = command_instance.Run(args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/google-cloud-sdk/lib/surface/services/enable.py", line 194, in Run
+    op = serviceusage.BatchEnableApiCall(project, args.service)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/api_lib/services/serviceusage.py", line 621, in BatchEnableApiCall
+    exceptions.ReraiseError(e,
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/api_lib/services/exceptions.py", line 175, in ReraiseError
+    core_exceptions.reraise(klass(api_lib_exceptions.HttpException(err)))
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/core/exceptions.py", line 146, in reraise
+    six.reraise(type(exc_value), exc_value, tb)
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/six/__init__.py", line 718, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/api_lib/services/serviceusage.py", line 618, in BatchEnableApiCall
+    return client.services.BatchEnable(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/google-cloud-sdk/lib/googlecloudsdk/generated_clients/apis/serviceusage/v1/serviceusage_v1_client.py", line 182, in BatchEnable
+    return self._RunMethod(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 737, in _RunMethod
+    return self.ProcessHttpResponse(method_config, http_response, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 743, in ProcessHttpResponse
+    self.__ProcessHttpResponse(method_config, http_response, request))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/bin/../lib/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 609, in __ProcessHttpResponse
+    raise exceptions.HttpError.FromResponse(
+googlecloudsdk.api_lib.services.exceptions.EnableServicePermissionDeniedException: User [playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com] does not have permission to access projects instance [playpen-922939] (or it may not exist): Permission denied to enable service [documentai.googleapis.com]
+Permission denied to enable service [storage.googleapis.com]
+Permission denied to enable service [aiplatform.googleapis.com]
+Help Token: ARD_zUY8EpU3bre10jqo856pMrbck37L0woaK_CuB5YR8jmNuvpHI-cOKUiaI5JQ7xAGJr9Ibdv3MuQ21-9wLRIZPXYDdG80h2KO3dkhmyB2TANy
+- '@type': type.googleapis.com/google.rpc.PreconditionFailure
+  violations:
+  - subject: ?error_code=110002&service=serviceusage.googleapis.com&permission=serviceusage.services.enable&resource=playpen-922939
+    type: googleapis.com
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: serviceusage.googleapis.com
+  metadata:
+    permission: serviceusage.services.enable
+    resource: playpen-922939
+    service: serviceusage.googleapis.com
+  reason: AUTH_PERMISSION_DENIED
+2023-12-13 16:40:53,856 ERROR    root            (gcloud.services.enable) User [playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com] does not have permission to access projects instance [playpen-922939] (or it may not exist): Permission denied to enable service [documentai.googleapis.com]
+Permission denied to enable service [storage.googleapis.com]
+Permission denied to enable service [aiplatform.googleapis.com]
+Help Token: ARD_zUY8EpU3bre10jqo856pMrbck37L0woaK_CuB5YR8jmNuvpHI-cOKUiaI5JQ7xAGJr9Ibdv3MuQ21-9wLRIZPXYDdG80h2KO3dkhmyB2TANy
+- '@type': type.googleapis.com/google.rpc.PreconditionFailure
+  violations:
+  - subject: ?error_code=110002&service=serviceusage.googleapis.com&permission=serviceusage.services.enable&resource=playpen-922939
+    type: googleapis.com
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: serviceusage.googleapis.com
+  metadata:
+    permission: serviceusage.services.enable
+    resource: playpen-922939
+    service: serviceusage.googleapis.com
+  reason: AUTH_PERMISSION_DENIED

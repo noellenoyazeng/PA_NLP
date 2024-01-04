@@ -1,0 +1,8 @@
+2024-01-02 09:50:34,597 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2024-01-02 09:50:34,601 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'get']
+2024-01-02 09:50:34,603 DEBUG    root            Running [gcloud.config.get] with arguments: [SECTION/PROPERTY: "project"]
+2024-01-02 09:50:34,608 DEBUG    root            Chosen display Format:value(.)
+2024-01-02 09:50:34,608 INFO     root            Display format: "value(.)"
+2024-01-02 09:50:34,608 INFO     ___FILE_ONLY___ playpen-922939
+
+2024-01-02 09:50:34,609 DEBUG    root            SDK update checks are disabled.

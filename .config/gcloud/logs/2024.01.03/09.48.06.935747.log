@@ -1,0 +1,8 @@
+2024-01-03 09:48:06,937 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2024-01-03 09:48:06,939 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2024-01-03 09:48:06,941 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "value(configuration.properties.dataproc.region)"]
+2024-01-03 09:48:06,954 DEBUG    root            Chosen display Format:default value(configuration.properties.dataproc.region)
+2024-01-03 09:48:06,955 INFO     root            Display format: "default value(configuration.properties.dataproc.region)"
+2024-01-03 09:48:06,955 INFO     ___FILE_ONLY___ europe-west2
+
+2024-01-03 09:48:06,956 DEBUG    root            SDK update checks are disabled.

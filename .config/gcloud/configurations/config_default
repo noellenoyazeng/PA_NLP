@@ -1,0 +1,6 @@
+[compute]
+region = europe-west2
+
+[dataproc]
+region = europe-west2
+
