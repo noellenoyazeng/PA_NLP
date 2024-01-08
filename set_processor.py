@@ -24,6 +24,8 @@ import time
 import numpy as np
 import glob
 import subprocess
+from config import gcloud, config, get, project, LOCATION, LOCATION_DEPLOY, pdf_mime_type, PROCESSOR_DISPLAY_NAME
+
 
 if "google.colab" in sys.modules:
     # Automatically restart kernel after installs so that your environment can access the new packages
@@ -39,11 +41,10 @@ else:
 
 
 #Once the project is created in the console, extract the parameters here
-
 #PROJECT_ID = !gcloud config get project
 
 try:
-    project_id = subprocess.check_output(['gcloud', 'config', 'get', 'project'], text = True).strip()
+    project_id = subprocess.check_output([gcloud, config, get, project], text = True).strip()
     PROJECT_ID = project_id
     print(f"PROJECT_ID set to: {PROJECT_ID}")
 except subprocess.CalledProcessError as e:
@@ -51,58 +52,41 @@ except subprocess.CalledProcessError as e:
     PROJECT_ID = None
     
 
-
-
-
-PROJECT_ID = PROJECT_ID
-LOCATION = "europe-west2"
-LOCATION_DEPLOY = "europe-west2" #Location to deploy GCP resources
+# See https://cloud.google.com/document-ai/docs/regions for all options.
+project_id = PROJECT_ID
+location = LOCATION
 
 #!gcloud services enable documentai.googleapis.com storage.googleapis.com aiplatform.googleapis.com
-# Edit these variables before running the code.
-project_id = PROJECT_ID
 
-# See https://cloud.google.com/document-ai/docs/regions for all options.
-location = LOCATION
-
-
-# Must be unique per project, e.g.: "My Processor"
-processor_display_name = "processor1"
+# Must be unique per project, e.g.: "My Processor": is this set automatically?
+processor_display_name = PROCESSOR_DISPLAY_NAME
 
 # You must set the `api_endpoint` if you use a location other than "us".
 client_options = ClientOptions(api_endpoint=f"{location}-documentai.googleapis.com")
-
-# Edit these variables before running the code.
-project_id = PROJECT_ID
-
-# See https://cloud.google.com/document-ai/docs/regions for all options.
-location = LOCATION
-
-# Must be unique per project, e.g.: "My Processor"
-processor_display_name = "processor1"
-
-# You must set the `api_endpoint` if you use a location other than "us".
-client_options = ClientOptions(api_endpoint=f"{location}-documentai.googleapis.com")
-
-
 
 
 
 #1. Create the processor: you can not create multiple processors with the same display name
 def create_processor(
-    project_id: str, location: str, processor_display_name: str
+    project_id: str,
+    location: str,
+    processor_display_name: str
 ) -> documentai.Processor:
+    """
+    function to create OCR processor, i.e. PDF reader using the GCP document AI API.
+    The document processor service is used to first set the correct client parameters. Then the exact location of the project is extracted as path to create the pretrained OCR processor.
+    :param project_id: ID of the project
+    :param location: chosen location for GCP resources
+    :param processor_display_name: display name of the created processor
+    :return: pre-trained OCR processor ready for usage by calling display name
+    """
     client = documentai.DocumentProcessorServiceClient(client_options=client_options)
-
-    # The full resource name of the location
-    # e.g.: projects/project_id/locations/location
     parent = client.common_location_path(project_id, location)
-
-    # Create a processor
+    
     return client.create_processor(
         parent=parent,
         processor=documentai.Processor(
-            display_name=processor_display_name, type_="OCR_PROCESSOR" #we are using the pre-trained OCR processor
+            display_name=processor_display_name, type_="OCR_PROCESSOR"
         ),
     )
 
@@ -122,6 +106,13 @@ def process_document(
     processor_name: str,
     file_path: str,
 ) -> documentai.Document:
+    """
+    function which takes the processor name and file path of the document and extracts the text from the document. 
+    It first read the given file into memory, load the binary datat into a document AI rawdocument object, configure the process request and finally process the given file using the given processor.
+    :param processor_name: name of pre-trained OCR processor
+    :param file_path: path the the PDF document
+    :return: document object 
+    """
     client = documentai.DocumentProcessorServiceClient(client_options=client_options)
 
     # Read the file into memory
@@ -130,7 +121,7 @@ def process_document(
 
     # Load Binary Data into Document AI RawDocument Object
     raw_document = documentai.RawDocument(
-        content=image_content, mime_type="application/pdf"
+        content=image_content, mime_type=pdf_mime_type
     )
 
     # Configure the process request

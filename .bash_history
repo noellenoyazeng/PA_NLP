@@ -51,3 +51,17 @@ git push origin dev
 git push origin dev
 git push origin dev 
 git push origin dev 
+git add . 
+git commit -m "Put code into python files"
+git add . 
+gti commit -m "Put code into python files"
+git commit -m "Put code into python files"
+git push origin feature-branch
+git status
+git config user.name
+git config user.email
+git checkout -b feature-branch
+git add.
+git add .
+git commit -m "Put code in python file"
+git push origin feature-branch
