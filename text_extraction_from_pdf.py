@@ -35,7 +35,11 @@ import numpy as np
 import glob
 
 from set_processor import process_document
-from config import folder_pdf_chunks, processor_max_pages, API_waiting_message
+
+from config import (folder_pdf_chunks,
+                    processor_max_pages,
+                    API_waiting_message
+)
 
 def split_and_save_pdf(
     input_pdf_path: str,
