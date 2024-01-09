@@ -65,3 +65,6 @@ git add.
 git add .
 git commit -m "Put code in python file"
 git push origin feature-branch
+git add . 
+git commit -m "make code production ready"
+git push origin feature-branch

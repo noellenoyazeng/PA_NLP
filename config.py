@@ -14,8 +14,8 @@ processor_max_pages = 15
 API_waiting_message = "API Resources temporarily exhausted. Waiting for 60 secs"
 
 #create_embeddings file
-text_bison2_ID = "text-bison@002"
-gecko2_embedding_ID = "textembedding-gecko@002"
+LLM_ID = "text-bison@002"
+embedding_model_ID = "textembedding-gecko@002"
 top_matched_number = 3
 dot_product_col = "dot_product"
 embedding_col = "embedding"

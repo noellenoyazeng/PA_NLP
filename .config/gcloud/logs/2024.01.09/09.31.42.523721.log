@@ -1,0 +1,8 @@
+2024-01-09 09:31:42,525 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2024-01-09 09:31:42,528 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2024-01-09 09:31:42,530 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "value(configuration.properties.core.project)"]
+2024-01-09 09:31:42,543 DEBUG    root            Chosen display Format:default value(configuration.properties.core.project)
+2024-01-09 09:31:42,544 INFO     root            Display format: "default value(configuration.properties.core.project)"
+2024-01-09 09:31:42,544 INFO     ___FILE_ONLY___ playpen-922939
+
+2024-01-09 09:31:42,544 DEBUG    root            SDK update checks are disabled.

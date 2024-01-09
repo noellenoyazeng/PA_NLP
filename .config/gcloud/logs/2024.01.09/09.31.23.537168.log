@@ -1,0 +1,13 @@
+2024-01-09 09:31:23,540 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2024-01-09 09:31:23,546 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2024-01-09 09:31:23,550 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "value(configuration.properties.core.project)"]
+2024-01-09 09:31:23,595 DEBUG    google.auth.transport.requests Making request: GET http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com/?recursive=true
+2024-01-09 09:31:23,601 DEBUG    urllib3.connectionpool Starting new HTTP connection (1): metadata.google.internal:80
+2024-01-09 09:31:23,604 DEBUG    urllib3.connectionpool http://metadata.google.internal:80 "GET /computeMetadata/v1/instance/service-accounts/playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com/?recursive=true HTTP/1.1" 200 155
+2024-01-09 09:31:23,607 DEBUG    google.auth.transport.requests Making request: GET http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com/token
+2024-01-09 09:31:23,611 DEBUG    urllib3.connectionpool http://metadata.google.internal:80 "GET /computeMetadata/v1/instance/service-accounts/playpen-922939-consumer-sa@playpen-922939.iam.gserviceaccount.com/token HTTP/1.1" 200 866
+2024-01-09 09:31:23,636 DEBUG    root            Chosen display Format:default value(configuration.properties.core.project)
+2024-01-09 09:31:23,637 INFO     root            Display format: "default value(configuration.properties.core.project)"
+2024-01-09 09:31:23,638 INFO     ___FILE_ONLY___ playpen-922939
+
+2024-01-09 09:31:23,639 DEBUG    root            SDK update checks are disabled.

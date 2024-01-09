@@ -5,11 +5,20 @@ import numpy as np
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 from typing import Tuple, List
 import time
-from config import text_bison2_ID, gecko2_embedding_ID, top_matched_number, dot_product_col, embedding_col, paragraph_number_col, text_col, API_waiting_message
+
+from config import (text_bison2_ID,
+                    gecko2_embedding_ID,
+                    top_matched_number,
+                    dot_product_col, embedding_col,
+                    paragraph_number_col,
+                    text_col,
+                    API_waiting_message
+)
+
 
 # Call the GCP models
-generation_model = TextGenerationModel.from_pretrained("text-bison@002")
-embedding_model = TextEmbeddingModel.from_pretrained("textembedding-gecko@002")
+generation_model = TextGenerationModel.from_pretrained(LLM_ID)
+embedding_model = TextEmbeddingModel.from_pretrained(embedding_model_ID)
 
 
 # This decorator is used to handle exceptions and apply exponential backoff in case of ResourceExhausted errors.
@@ -21,8 +30,7 @@ def text_generation_model_with_backoff(**kwargs):
 
 def get_embedding(text: str) -> list:
     """
-    function to transform a given text into embeddings, numerical vector, using GCP's gecko 2 embedding model. 
-    It includes a 60 secs wait time if API resources are temporarily exhausted. 
+    function to transform a given text into embeddings, numerical vector, using GCP's gecko 2 embedding model. It includes a 60 secs wait time if API resources are temporarily exhausted. 
     :param text: input text to transform
     :return embeddings: numerical vector corresponding to the embedding of the given text
     """

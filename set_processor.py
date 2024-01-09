@@ -24,7 +24,17 @@ import time
 import numpy as np
 import glob
 import subprocess
-from config import gcloud, config, get, project, LOCATION, LOCATION_DEPLOY, pdf_mime_type, PROCESSOR_DISPLAY_NAME
+
+from config import (
+    gcloud,
+    config,
+    get,
+    project,
+    LOCATION,
+    LOCATION_DEPLOY,
+    pdf_mime_type,
+    PROCESSOR_DISPLAY_NAME
+)
 
 
 if "google.colab" in sys.modules:
@@ -73,8 +83,7 @@ def create_processor(
     processor_display_name: str
 ) -> documentai.Processor:
     """
-    function to create OCR processor, i.e. PDF reader using the GCP document AI API.
-    The document processor service is used to first set the correct client parameters. Then the exact location of the project is extracted as path to create the pretrained OCR processor.
+    function to create OCR processor, i.e. PDF reader using the GCP document AI API. The document processor service is used to first set the correct client parameters. Then the exact location of the project is extracted as path to create the pretrained OCR processor.
     :param project_id: ID of the project
     :param location: chosen location for GCP resources
     :param processor_display_name: display name of the created processor
@@ -107,8 +116,7 @@ def process_document(
     file_path: str,
 ) -> documentai.Document:
     """
-    function which takes the processor name and file path of the document and extracts the text from the document. 
-    It first read the given file into memory, load the binary datat into a document AI rawdocument object, configure the process request and finally process the given file using the given processor.
+    function which takes the processor name and file path of the document and extracts the text from the document. It first read the given file into memory, load the binary datat into a document AI rawdocument object, configure the process request and finally process the given file using the given processor.
     :param processor_name: name of pre-trained OCR processor
     :param file_path: path the the PDF document
     :return: document object 
